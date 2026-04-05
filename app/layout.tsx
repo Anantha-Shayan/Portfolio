@@ -4,6 +4,8 @@
 import type { Metadata } from "next";
 import { Syne, DM_Sans, DM_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import { OrbBackground } from "@/components/ui/OrbBackground";
+import { BlurryOrbs } from "@/components/ui/BlurryOrbs";
 
 /* ── Google Fonts (subset for performance) ────────────────────── */
 const syne = Syne({
@@ -88,12 +90,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // lang for accessibility; `dark` class is managed by useTheme hook
     <html lang="en" className="dark" suppressHydrationWarning>
       <body
-        className={`${syne.variable} ${dmSans.variable} ${dmMono.variable} ${playfair.variable}`}
+        className={`${syne.variable} ${dmSans.variable} ${dmMono.variable} ${playfair.variable} relative`}
       >
-        {children}
+        {/* 🔥 Add OrbBackground as first child */}
+        <OrbBackground />
+        
+        {/* All page content above the orbs */}
+        <div className="relative z-10">
+          {children}
+        </div>
       </body>
     </html>
   );

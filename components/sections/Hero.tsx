@@ -102,55 +102,8 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-center pt-20 overflow-hidden"
+      className="relative z-10 min-h-screen flex flex-col justify-center pt-20 overflow-hidden"
     >
-      {/* ─────────────────────────────────────────────────────────
-          Blurry orb background — aria-hidden, purely decorative.
-          Four orbs placed around the viewport, drifting slowly.
-      ───────────────────────────────────────────────────────── */}
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          inset: 0,
-          overflow: "hidden",
-          zIndex: 0,
-          pointerEvents: "none",
-        }}
-      >
-        {/* Violet — upper left, largest orb, anchors the scene */}
-        <Orb
-          gradient="radial-gradient(circle, rgba(108,127,255,0.50) 0%, transparent 68%)"
-          width={720} height={720}
-          top="-160px" left="-200px"
-          xRange={[0, 70, 0]} yRange={[0, 50, 0]} scaleRange={[1, 1.1, 1]}
-          dur={20}
-        />
-        {/* Indigo-purple — lower right */}
-        <Orb
-          gradient="radial-gradient(circle, rgba(139,92,246,0.42) 0%, transparent 68%)"
-          width={620} height={620}
-          bottom="-100px" right="-150px"
-          xRange={[0, -55, 0]} yRange={[0, -65, 0]} scaleRange={[1, 1.14, 1]}
-          dur={24}
-        />
-        {/* Teal — mid right, smaller accent */}
-        <Orb
-          gradient="radial-gradient(circle, rgba(52,211,153,0.28) 0%, transparent 68%)"
-          width={460} height={460}
-          top="28%" right="4%"
-          xRange={[0, 45, 0]} yRange={[0, 75, 0]} scaleRange={[1, 0.9, 1]}
-          dur={17}
-        />
-        {/* Blue — mid left, softer */}
-        <Orb
-          gradient="radial-gradient(circle, rgba(59,130,246,0.22) 0%, transparent 68%)"
-          width={400} height={400}
-          top="60%" left="3%"
-          xRange={[0, 60, 0]} yRange={[0, -40, 0]} scaleRange={[1, 1.08, 1]}
-          dur={19}
-        />
-      </div>
 
       {/* ─────────────────────────────────────────────────────────
           Content — sits above the orbs via z-index

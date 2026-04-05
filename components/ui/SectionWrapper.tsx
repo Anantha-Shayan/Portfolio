@@ -15,7 +15,7 @@ export function SectionWrapper({ id, className, children }: SectionWrapperProps)
     <section
       id={id}
       className={cn(
-        "max-w-[900px] mx-auto px-6 py-24",
+        "relative z-10 max-w-[900px] mx-auto px-6 py-24",
         className
       )}
     >

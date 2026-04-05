@@ -6,6 +6,7 @@
 // and add RESEND_API_KEY to your .env.local.
 
 import { NextRequest, NextResponse } from "next/server";
+import { Resend } from "resend";
 
 interface ContactPayload {
   name:    string;
@@ -36,14 +37,13 @@ export async function POST(req: NextRequest) {
     }
 
     // ── Option A: Resend (uncomment to enable) ───────────────
-    // import { Resend } from "resend";
-    // const resend = new Resend(process.env.RESEND_API_KEY);
-    // await resend.emails.send({
-    //   from:    "Portfolio <no-reply@ananthashayan.dev>",
-    //   to:      ["ananthashayan2802@outlook.com"],
-    //   subject: `Portfolio contact from ${name}`,
-    //   text:    `From: ${name} <${email}>\n\n${message}`,
-    // });
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    await resend.emails.send({
+      from:    "Portfolio <no-reply@resendmail.com>",
+      to:      ["ananthashayan2802@outlook.com"],
+      subject: `Portfolio contact from ${name}`,
+      text:    `From: ${name} <${email}>\n\n${message}`,
+    });
 
     // ── Option B: log to console (development default) ───────
     console.log("[Contact Form]", { name, email, message });

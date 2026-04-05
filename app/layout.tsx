@@ -42,7 +42,7 @@ const playfair = Playfair_Display({
 
 /* ── Metadata ─────────────────────────────────────────────────── */
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ananthashayan.dev"), // update with real domain
+  metadataBase: new URL("https://ananthadev.online"), // update with real domain
   title: {
     default:  "Anantha Shayan — Machine Learning Engineer",
     template: "%s | Anantha Shayan",
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
   openGraph: {
     type:        "website",
     locale:      "en_US",
-    url:         "https://ananthashayan.dev",
+    url:         "https://ananthadev.online",
     title:       "Anantha Shayan — Machine Learning Engineer",
     description: "Building intelligent systems that work in the real world.",
     siteName:    "Anantha Shayan Portfolio",
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
     card:        "summary_large_image",
     title:       "Anantha Shayan — Machine Learning Engineer",
     description: "Building intelligent systems that work in the real world.",
-    creator:     "@ananthashayan", // update if you have a handle
+    creator:     "@anantha_shayan", // update if you have a handle
   },
   robots: {
     index:  true,

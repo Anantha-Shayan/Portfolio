@@ -34,3 +34,6 @@ yarn-error.log*
 # Editor
 .vscode/
 .idea/
+
+#personal files
+/public/*.pdf

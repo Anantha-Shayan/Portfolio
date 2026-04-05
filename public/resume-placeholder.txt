@@ -1,0 +1,2 @@
+Place your resume PDF here as `resume.pdf`.
+The download button in the Hero section references /resume.pdf.

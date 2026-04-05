@@ -1,0 +1,154 @@
+/* app/globals.css
+   Global styles — design tokens are defined as CSS custom properties
+   so they update instantly on theme toggle without a flash.
+*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Google Fonts are loaded in layout.tsx via next/font ──────── */
+
+/* ── Design Tokens ────────────────────────────────────────────── */
+:root {
+  /* Dark mode (default) */
+  --bg:       #0c0c0e;
+  --bg2:      #111114;
+  --bg3:      #18181c;
+  --bg4:      #1e1e24;
+  --border:   #2a2a32;
+  --border2:  #3a3a45;
+  --text:     #e8e8ec;
+  --text2:    #9898a8;
+  --text3:    #5a5a6a;
+  --accent:   #6c7fff;
+  --accent2:  #a78bfa;
+  --accent3:  #34d399;
+  /* Navbar background — semi-transparent, avoids color-mix */
+  --nav-bg:   rgba(12, 12, 14, 0.88);
+}
+
+/* Light mode overrides — triggered by Tailwind's `dark` class on <html> */
+/* We invert: light is the non-dark state, so we apply light tokens when
+   the `.dark` class is NOT present. Tailwind darkMode:"class" adds `.dark`
+   for dark mode, so we need to flip the convention slightly: */
+.light,
+html:not(.dark) {
+  --bg:       #f7f7f9;
+  --bg2:      #ffffff;
+  --bg3:      #f0f0f4;
+  --bg4:      #e8e8f0;
+  --border:   #dddde8;
+  --border2:  #c8c8d8;
+  --text:     #111118;
+  --text2:    #5a5a72;
+  --text3:    #9898b0;
+  --accent:   #4f5ff0;
+  --accent2:  #7c3aed;
+  --accent3:  #059669;
+  --nav-bg:   rgba(247, 247, 249, 0.92);
+}
+
+/* ── Base Resets ──────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-dm-sans), sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Typography Helpers ──────────────────────────────────────── */
+.font-head  { font-family: var(--font-syne),    sans-serif; }
+.font-mono  { font-family: var(--font-dm-mono), monospace; }
+.font-body  { font-family: var(--font-dm-sans), sans-serif; }
+
+/* ── Scrollbar ───────────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+/* ── Selection ───────────────────────────────────────────────── */
+::selection {
+  background: rgba(108, 127, 255, 0.25);
+  color: var(--text);
+}
+
+/* ── Focus Rings ─────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ── Utility: section-label ──────────────────────────────────── */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-dm-mono), monospace;
+  font-size: 0.72rem;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.section-label::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+/* ── Contact form inputs ─────────────────────────────────────── */
+/* These live here (not as an inline <style>) to avoid React 19 hydration warnings */
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  padding: 0.65rem 0.9rem;
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.2s ease;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  border-color: var(--accent);
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: var(--text3);
+}
+.skill-tag {
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.skill-tag:hover {
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+  background: rgba(108, 127, 255, 0.06);
+}

@@ -151,7 +151,6 @@ export function Hero() {
                 fontStyle: "italic",
                 lineHeight: 1.03,
                 letterSpacing: "-0.015em",
-                // Subtle gradient on the last name for extra depth
                 background: "linear-gradient(135deg, var(--text2) 0%, var(--text3) 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",

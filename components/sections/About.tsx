@@ -3,7 +3,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { fadeUp, staggerContainer, staggerChild, viewportOnce } from "@/lib/animations";
+import { staggerContainer, staggerChild, viewportOnce } from "@/lib/animations";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionLabel }   from "@/components/ui/SectionLabel";
 import { about } from "@/data/profile";

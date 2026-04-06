@@ -200,7 +200,7 @@ export function Hero() {
             </button>
 
             <a
-              href={profile.resumePath}
+              href={"https://drive.google.com/file/d/17i-Rr5orXjheP6v1lBhkJBk8QTEjBb8y/view?usp=sharing"}
               download
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-light text-[0.9rem] border transition-all duration-200"
               style={{ borderColor: "var(--border)", color: "var(--text)", background: "transparent" }}

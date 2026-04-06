@@ -171,7 +171,7 @@ export function Hero() {
             className="font-mono text-[0.85rem] tracking-wider mb-6"
             style={{ color: "var(--accent)" }}
           >
-            // {profile.title}
+            {profile.title}
           </motion.p>
 
           {/* Tagline */}

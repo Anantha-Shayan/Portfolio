@@ -105,9 +105,7 @@ export function Hero() {
       className="relative z-10 min-h-screen flex flex-col justify-center pt-20 overflow-hidden"
     >
 
-      {/* ─────────────────────────────────────────────────────────
-          Content — sits above the orbs via z-index
-      ───────────────────────────────────────────────────────── */}
+      {/*Content — sits above the orbs via z-index*/}
       <div className="relative z-10 max-w-[900px] mx-auto px-6 w-full">
         <motion.div
           variants={staggerContainer}

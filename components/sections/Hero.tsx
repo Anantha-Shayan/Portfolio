@@ -150,7 +150,7 @@ export function Hero() {
                 (e.currentTarget as HTMLAnchorElement).style.color = "var(--text)";
               }}
             >
-              Download Resume ↗
+              View Resume ↗
             </a>
 
             <button

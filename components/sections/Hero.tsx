@@ -34,65 +34,6 @@ function MediumIcon() {
   );
 }
 
-// One slow-drifting blurry blob
-// function Orb({
-//   gradient,
-//   width,
-//   height,
-//   top,
-//   left,
-//   right,
-//   bottom,
-//   xRange,
-//   yRange,
-//   scaleRange,
-//   dur,
-// }: {
-//   gradient: string;
-//   width: number;
-//   height: number;
-//   top?: string;
-//   left?: string;
-//   right?: string;
-//   bottom?: string;
-//   xRange: number[];
-//   yRange: number[];
-//   scaleRange: number[];
-//   dur: number;
-// }) {
-//   return (
-//     <motion.div
-//       aria-hidden
-//       initial={{ opacity: 0, x: xRange[0], y: yRange[0], scale: scaleRange[0] }}
-//       animate={{
-//         opacity: 1,
-//         x: xRange,
-//         y: yRange,
-//         scale: scaleRange,
-//       }}
-//       transition={{
-//         opacity: { duration: 1.8, ease: "easeOut" },
-//         x: { duration: dur, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" },
-//         y: { duration: dur * 1.2, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" },
-//         scale: { duration: dur * 0.8, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" },
-//       }}
-//       style={{
-//         position: "absolute",
-//         width,
-//         height,
-//         top,
-//         left,
-//         right,
-//         bottom,
-//         borderRadius: "50%",
-//         background: gradient,
-//         filter: "blur(88px)",
-//         willChange: "transform",
-//         pointerEvents: "none",
-//       }}
-//     />
-//   );
-// }
 
 export function Hero() {
   function scrollTo(id: string) {
@@ -105,7 +46,6 @@ export function Hero() {
       className="relative z-10 min-h-screen flex flex-col justify-center pt-20 overflow-hidden"
     >
 
-      {/*Content — sits above the orbs via z-index*/}
       <div className="relative z-10 max-w-[900px] mx-auto px-6 w-full">
         <motion.div
           variants={staggerContainer}

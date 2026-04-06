@@ -5,7 +5,6 @@ import type { Metadata } from "next";
 import { Syne, DM_Sans, DM_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { OrbBackground } from "@/components/ui/OrbBackground";
-import { BlurryOrbs } from "@/components/ui/BlurryOrbs";
 
 /* ── Google Fonts (subset for performance) ────────────────────── */
 const syne = Syne({

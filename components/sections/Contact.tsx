@@ -165,12 +165,12 @@ export function Contact() {
             <p
               className="mt-3 text-center font-mono text-[0.8rem] px-4 py-3 rounded-lg border"
               style={{
-                color:       "var(--accent3)",
+                color:       "red",
                 borderColor: "rgba(52,211,153,0.25)",
                 background:  "rgba(52,211,153,0.06)",
               }}
             >
-              Message sent! I&apos;ll get back to you soon.
+              There is an error in sending the message! Please contact via GMail or LinkedIn.
             </p>
           )}
         </motion.form>

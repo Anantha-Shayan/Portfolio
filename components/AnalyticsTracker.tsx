@@ -8,7 +8,7 @@ export default function AnalyticsTracker() {
 
   useEffect(() => {
     if (typeof window.gtag === 'function') {
-      window.gtag('config', 'G-XXXXXXXXXX', {
+      window.gtag('config', 'G-J4NWDWC7LC', {
         page_path: pathname,
       });
     }

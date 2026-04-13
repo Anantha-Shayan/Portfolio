@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { Syne, DM_Sans, DM_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { OrbBackground } from "@/components/ui/OrbBackground";
+import Script from "next/script"; //Google analytics
 
 /* ── Google Fonts (subset for performance) ────────────────────── */
 const syne = Syne({
@@ -90,17 +91,32 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <body
-        className={`${syne.variable} ${dmSans.variable} ${dmMono.variable} ${playfair.variable} relative`}
-      >
-        {/* 🔥 Add OrbBackground as first child */}
-        <OrbBackground />
-        
-        {/* All page content above the orbs */}
-        <div className="relative z-10">
-          {children}
-        </div>
-      </body>
-    </html>
+  <body
+    className={`${syne.variable} ${dmSans.variable} ${dmMono.variable} ${playfair.variable} relative`}
+  >
+    {/* Google Analytics */}
+    <Script
+      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+      strategy="afterInteractive"
+    />
+    <Script id="google-analytics" strategy="afterInteractive">
+      {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', 'G-J4NWDWC7LC');
+      `}
+    </Script>
+
+    {/* 🔥 Orb Background */}
+    <OrbBackground />
+    
+    {/* Content */}
+    <div className="relative z-10">
+      {children}
+    </div>
+  </body>
+</html>
   );
 }

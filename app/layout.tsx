@@ -96,7 +96,7 @@ export default function RootLayout({
     className={`${syne.variable} ${dmSans.variable} ${dmMono.variable} ${playfair.variable} relative`}
   >
     
-    <AnalyticsTracker />
+    {/* <AnalyticsTracker /> */}
     
     {/* Google Analytics */}
     <Script

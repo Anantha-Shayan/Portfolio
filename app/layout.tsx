@@ -6,6 +6,7 @@ import { Syne, DM_Sans, DM_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { OrbBackground } from "@/components/ui/OrbBackground";
 import Script from "next/script"; //Google analytics
+import AnalyticsTracker from "@/components/AnalyticsTracker"; //Google analytics
 
 /* ── Google Fonts (subset for performance) ────────────────────── */
 const syne = Syne({
@@ -94,6 +95,9 @@ export default function RootLayout({
   <body
     className={`${syne.variable} ${dmSans.variable} ${dmMono.variable} ${playfair.variable} relative`}
   >
+    
+    <AnalyticsTracker />
+    
     {/* Google Analytics */}
     <Script
       src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"

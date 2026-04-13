@@ -6,7 +6,7 @@ import { Syne, DM_Sans, DM_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { OrbBackground } from "@/components/ui/OrbBackground";
 import Script from "next/script"; //Google analytics
-import AnalyticsTracker from "@/components/AnalyticsTracker"; //Google analytics
+import AnalyticsTracker from "@/components/AnalyticsTracker.tsx"; //Google analytics
 
 /* ── Google Fonts (subset for performance) ────────────────────── */
 const syne = Syne({

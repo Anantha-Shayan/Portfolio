@@ -55,6 +55,22 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Package standalone app
+        run: |
+          mkdir -p .next/standalone/.next
+          cp -r public .next/standalone/public
+          cp -r .next/static .next/standalone/.next/static
+          tar -czf portfolio-release.tar.gz -C .next/standalone .
+
+      - name: Copy release to VM
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.VM_HOST }}
+          username: ${{ secrets.VM_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: portfolio-release.tar.gz
+          target: /tmp
+
       - name: Deploy to VM
         uses: appleboy/ssh-action@master
         with:
@@ -62,8 +78,34 @@ jobs:
           username: ${{ secrets.VM_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd ${{ secrets.DEPLOY_PATH }}
-            git pull origin main
-            npm ci
-            npm run build
-            sudo systemctl restart portfolio || echo "Restart skipped if systemd not configured"
+            set -euo pipefail
+            SERVICE_NAME="${{ secrets.VM_SERVICE }}"
+            SERVICE_NAME="${SERVICE_NAME:-portfolio}"
+            RELEASE_DIR="${{ secrets.DEPLOY_PATH }}"
+            if [ -z "$RELEASE_DIR" ]; then
+              echo "DEPLOY_PATH secret is required"
+              exit 1
+            fi
+            PREVIOUS_DIR="${RELEASE_DIR}.previous"
+            NEW_DIR="${RELEASE_DIR}.new"
+
+            rm -rf "$NEW_DIR"
+            mkdir -p "$NEW_DIR"
+            tar -xzf /tmp/portfolio-release.tar.gz -C "$NEW_DIR"
+            rm -f /tmp/portfolio-release.tar.gz
+
+            rm -rf "$PREVIOUS_DIR"
+            if [ -d "$RELEASE_DIR" ]; then
+              mv "$RELEASE_DIR" "$PREVIOUS_DIR"
+            fi
+            mv "$NEW_DIR" "$RELEASE_DIR"
+
+            if ! sudo systemctl restart "$SERVICE_NAME" || ! sudo systemctl is-active --quiet "$SERVICE_NAME"; then
+              echo "Service restart failed; rolling back release"
+              rm -rf "$RELEASE_DIR"
+              if [ -d "$PREVIOUS_DIR" ]; then
+                mv "$PREVIOUS_DIR" "$RELEASE_DIR"
+                sudo systemctl restart "$SERVICE_NAME" || true
+              fi
+              exit 1
+            fi

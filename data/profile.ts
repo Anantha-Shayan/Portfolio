@@ -1,239 +1,422 @@
 // ============================================================
 // data/profile.ts
 // Central data file — edit this to update all portfolio content.
-// All sections read from this file; no content is hardcoded
-// in components.
 // ============================================================
 
 export const profile = {
-  name:  "Anantha Shayan",
+  name: "Anantha Shayan",
+
   title: "AI/ML • Backend Systems • Infrastructure",
+
   tagline:
-    "I enjoy building systems end-to-end — from machine learning models and backend APIs to deployment pipelines, monitoring dashboards, and cloud infrastructure. My work is driven by curiosity, experimentation, and a strong focus on building things that are practical, scalable, and actually useful. Currently pursuing a B.E. in Artificial Intelligence & Machine Learning at JSSATE Bengaluru alongside a Minor in AI from IIT Ropar, I actively work on projects involving AI systems, vector search, backend engineering, DevOps, workflow automation, and real-world product development.",
+    "I build intelligent systems that combine AI, backend engineering, automation, and infrastructure. My work ranges from retrieval systems and recommendation engines to cloud deployments, observability stacks, and production-focused backend workflows.",
+
   status: "Available for opportunities",
-  email:  "ananthashayan2802@outlook.com",
+
+  email: "ananthashayan2802@outlook.com",
+
   socials: {
     linkedin: "https://www.linkedin.com/in/anantha-shayan28022006/",
-    github:   "https://github.com/Anantha-Shayan",
-    medium:   "https://medium.com/@ananthashayan2802"
+    github: "https://github.com/Anantha-Shayan",
+    medium: "https://medium.com/@ananthashayan2802",
   },
+
   // Path to resume PDF inside /public
   resumePath: "/resume.pdf",
 };
 
 // ─── ABOUT ───────────────────────────────────────────────────
+
 export const about = {
   paragraphs: [
-    "I'm a machine learning engineer focused on building systems that solve real problems — not just ones that look good on paper.",
-    "My work spans NLP, time-series forecasting, and end-to-end AI pipelines. I care about the full stack: from model design to deployment to making things actually scale.",
-    "Currently studying AI at IIT Ropar (Minor) and CSE at JSS Academy, while building things that push beyond coursework.",
+    "I’m an AI/ML engineer focused on building practical systems that combine machine learning with scalable software engineering.",
+
+    "My interests include retrieval systems, semantic search, recommendation engines, backend APIs, workflow automation, and cloud infrastructure.",
+
+    "I enjoy understanding how systems work internally — from vector search pipelines and RAG architectures to deployment workflows, monitoring stacks, and distributed infrastructure.",
+
+    "Alongside AI development, I regularly work with Docker, Linux, FastAPI, PostgreSQL, Grafana, Prometheus, CI/CD pipelines, and cloud-based deployments.",
+
+    "Recently, I explored hybrid search architectures while building a Job Recommendation System, comparing FAISS with distributed vector databases and studying HNSW-based similarity search systems.",
+
+    "Currently, I work as the Founding Tech Lead at an early-stage HealthTech startup, contributing across AI workflows, backend systems, automation, and technical architecture.",
   ],
 
   featuredArticle: {
-  title: "Vector Database (FAISS) for Recommendation Systems",
-  description: "My Key Insights into FAISS VectorDB - a note on similarity search and indexing methods",
-  link: "https://medium.com/@ananthashayan2802/vector-database-faiss-for-recommendation-systems-my-key-insights-218c87ed8f53",
-  readTime: "2 min read"
-},
+    title: "Vector Database (FAISS) for Recommendation Systems",
+
+    description:
+      "My insights on vector search, indexing methods, and similarity retrieval systems.",
+
+    link: "https://medium.com/@ananthashayan2802/vector-database-faiss-for-recommendation-systems-my-key-insights-218c87ed8f53",
+
+    readTime: "2 min read",
+  },
 
   focus: [
     {
-      title: "ML Pipelines",
-      description: "End-to-end systems from data ingestion to model serving",
+      title: "AI Systems",
+
+      description:
+        "Retrieval systems, recommendation engines, and production-focused ML workflows",
     },
+
     {
-      title: "Real-World Systems",
-      description: "Production deployments on GCP, with CI/CD and monitoring",
+      title: "Infrastructure",
+
+      description:
+        "Cloud deployments, Docker, monitoring, CI/CD, and backend systems",
     },
+
     {
-      title: "Problem Solving",
-      description: "First-principles thinking applied to messy, real-world data",
+      title: "Engineering",
+
+      description:
+        "Building practical systems with scalability, reliability, and usability in mind",
     },
   ],
 };
 
 // ─── SKILLS ──────────────────────────────────────────────────
+
 export type SkillGroup = {
   label: string;
-  tags:  string[];
+  tags: string[];
 };
 
 export const skills: SkillGroup[] = [
   {
     label: "Languages",
-    tags:  ["Python", "SQL"],
+
+    tags: ["Python", "SQL", "C", "C++"],
   },
+
   {
-    label: "Machine Learning",
-    tags:  ["Machine Learning", "Deep Learning", "NLP", "Time-Series Forecasting"],
+    label: "AI / ML",
+
+    tags: [
+      "Machine Learning",
+      "NLP",
+      "RAG",
+      "Semantic Search",
+      "Recommendation Systems",
+      "CNN",
+    ],
   },
+
   {
-    label: "Techniques",
-    tags:  ["Embeddings", "Semantic Search", "RAG", "CNN", "LSTM / GRU"],
+    label: "Libraries & Frameworks",
+
+    tags: [
+      "Scikit-learn",
+      "LangChain",
+      "Pandas",
+      "NumPy",
+      "FastAPI",
+      "Flask",
+    ],
   },
+
   {
-    label: "Libraries",
-    tags:  ["NumPy", "Pandas", "Scikit-learn", "LangChain", "flask", "Other ML related Libraries"],
+    label: "Infrastructure & DevOps",
+
+    tags: [
+      "Docker",
+      "Linux",
+      "GCP",
+      "CI/CD",
+      "Grafana",
+      "Prometheus",
+      "Server Management",
+    ],
   },
-  {
-    label: "Backend & Deployment",
-    tags:  ["Flask", "Docker", "GCP", "GitHub Actions (CI/CD)"],
-  },
-  {
-    label: "Tools",
-    tags:  ["Git", "n8n"],
-  },
+
   {
     label: "Databases",
-    tags: ["VectorDB", "MySQL", "Postgres"]
+
+    tags: [
+      "PostgreSQL",
+      "MySQL",
+      "FAISS",
+      "Vector Databases",
+    ],
+  },
+
+  {
+    label: "Tools & Workflow",
+
+    tags: [
+      "GitHub",
+      "n8n",
+      "Workflow Automation",
+      "REST APIs",
+    ],
   },
 ];
 
 // ─── PROJECTS ────────────────────────────────────────────────
+
 export type ProjectCategory = "ml" | "nlp" | "systems";
 
 export type Project = {
-  id:         string;
-  num:        string;
-  title:      string;
-  subtitle:   string;
+  id: string;
+  num: string;
+  title: string;
+  subtitle: string;
   categories: ProjectCategory[];
   description: string;
-  highlights:  string[];
-  stack:       string[];
-  github:      string;
+  highlights: string[];
+  stack: string[];
+  github: string;
+
   // Detailed modal content
-  overview:    string;
+  overview: string;
   architecture: string[];
 };
 
 export const projects: Project[] = [
   {
-    id:       "job-rec",
-    num:      "01",
-    title:    "AI Job Recommendation System",
-    subtitle: "Endee Vector DB",
+    id: "job-rec",
+
+    num: "01",
+
+    title: "AI Job Recommendation System",
+
+    subtitle: "Semantic Retrieval & Vector Search",
+
     categories: ["ml", "systems"],
+
     description:
-      "Semantic job matching system that parses resumes, encodes them as vectors, and ranks job listings by cosine similarity. Surfaces skill gaps alongside match scores.",
+      "Semantic job matching system that combines vector search and hybrid retrieval techniques to match resumes with relevant job opportunities.",
+
     highlights: [
-      "Resume parsing + embedding pipeline",
-      "Vector search via Endee Vector DB",
-      "Cosine similarity ranking + skill gap analysis",
-      "Flask REST backend",
+      "Resume parsing and embedding pipeline",
+      "Semantic + keyword search experimentation",
+      "FAISS and vector database comparisons",
+      "Skill gap analysis and ranking",
     ],
-    stack: ["Python", "Flask", "Sentence Transformers", "Endee Vector DB", "FAISS Vector DB", "Cosine Similarity", "REST API"],
-    github: "https://github.com/Anantha-Shayan/endee/tree/master/recommendation_system",
+
+    stack: [
+      "Python",
+      "FastAPI",
+      "Sentence Transformers",
+      "FAISS",
+      "Vector Databases",
+      "Semantic Search",
+      "REST API",
+    ],
+
+    github:
+      "https://github.com/Anantha-Shayan/endee/tree/master/recommendation_system",
+
     overview:
-      "A semantic job matching engine that treats resumes and job listings as vector spaces rather than keyword bags. The system encodes both into dense embedding vectors and retrieves the most relevant jobs using cosine similarity — surfacing not just matches, but skill gaps.",
+      "A recommendation system designed to move beyond traditional keyword matching by using semantic retrieval and vector similarity search. The project involved experimentation with FAISS, hybrid search architectures, and distributed vector databases while exploring the tradeoffs between search quality, latency, and scalability.",
+
     architecture: [
-      "Resume text is parsed and chunked into structured sections",
-      "Each section is embedded using a sentence transformer model",
-      "Job listings are pre-indexed into Endee Vector DB at ingestion",
-      "Query vector (resume) is matched against the index via cosine similarity",
-      "Match scores are ranked and skill gap analysis is returned alongside results",
-      "Flask REST API exposes endpoints for upload, search, and gap analysis",
+      "Resume parsing and embedding pipeline",
+      "Semantic similarity search using vector embeddings",
+      "Hybrid retrieval experimentation with keyword matching",
+      "Vector indexing and retrieval using FAISS",
+      "Skill gap analysis alongside ranking",
+      "Backend APIs for search and recommendation workflows",
     ],
   },
+
   {
-    id:       "agri-forecast",
-    num:      "02",
-    title:    "Agricultural Market Price Forecasting",
-    subtitle: "Time-Series ML",
-    categories: ["ml"],
-    description:
-      "Probabilistic multi-series forecasting of mandi prices using DeepAR. Designed to handle the noise and data limitations inherent in agricultural datasets.",
-    highlights: [
-      "Probabilistic forecasting with DeepAR",
-      "Multi-series Mandi price dataset",
-      "Handles sparse data and uncertainty",
-      "Confidence intervals on predictions",
-    ],
-    stack: ["Python", "DeepAR", "GluonTS", "Pandas", "NumPy", "Probabilistic Forecasting"],
-    github: "https://github.com/Anantha-Shayan/Market-Trend-Analysis",
-    overview:
-      "A probabilistic forecasting system for mandi (agricultural market) prices across multiple commodities and regions. DeepAR learns shared temporal patterns across series, making it robust to sparse or noisy data — a core challenge in agricultural datasets.",
-    architecture: [
-      "Raw mandi price data is cleaned and normalized across commodity–region pairs",
-      "Time series are formatted into DeepAR-compatible multivariate input",
-      "DeepAR model trained to learn shared patterns across all series simultaneously",
-      "Outputs probabilistic forecasts with uncertainty bounds (p10 / p50 / p90)",
-      "Results visualized with confidence intervals for decision-making",
-      "Handles missing data and irregular seasonal patterns gracefully",
-    ],
-  },
-  {
-    id:       "sasya-sampada",
-    num:      "03",
-    title:    "SasyaSampada",
+    id: "sasya-sampada",
+
+    num: "02",
+
+    title: "SasyaSampada",
+
     subtitle: "AI Assistance for Farming",
+
     categories: ["nlp", "systems"],
+
     description:
-      "RAG-based agricultural assistant that retrieves domain knowledge to answer farmer queries and recommend crops — built for low-resource, high-impact use.",
+      "RAG-based agricultural assistant that retrieves domain-specific knowledge to provide contextual responses and crop-related assistance.",
+
     highlights: [
-      "RAG pipeline with LangChain",
-      "Agricultural knowledge retrieval",
-      "Crop recommendation engine",
-      "Optimized for low-resource deployment",
+      "Retrieval-Augmented Generation pipeline",
+      "Semantic agricultural knowledge retrieval",
+      "Context-aware conversational responses",
+      "Low-resource deployment design",
     ],
-    stack: ["Python", "LangChain", "RAG", "Vector Index", "Embeddings", "NLP"],
+
+    stack: [
+      "Python",
+      "LangChain",
+      "RAG",
+      "FAISS",
+      "Embeddings",
+      "NLP",
+    ],
+
     github: "https://github.com/Anantha-Shayan/SasyaSampada",
+
     overview:
-      "An AI assistant for farmers built on a Retrieval-Augmented Generation (RAG) architecture. Instead of hallucinating agricultural advice, it grounds responses in a curated knowledge base — ensuring accurate, contextual answers about crops, soil, and market conditions.",
+      "An AI-powered farming assistant built using Retrieval-Augmented Generation (RAG). Instead of generating generic responses, the system retrieves relevant agricultural knowledge before generating answers, improving contextual accuracy and reliability.",
+
     architecture: [
-      "Agricultural knowledge base curated and chunked into semantic units",
-      "Documents embedded and stored in a local vector index",
-      "User queries are embedded and matched against the knowledge index",
-      "Top-k retrieved chunks passed as context to the language model",
-      "LangChain orchestrates retrieval, context injection, and response generation",
-      "Crop recommendation module integrated with soil and season input features",
+      "Agricultural knowledge base chunking and indexing",
+      "Semantic retrieval using embeddings",
+      "Top-k contextual document retrieval",
+      "LangChain orchestration pipeline",
+      "RAG-based response generation",
+      "Crop recommendation workflows",
+    ],
+  },
+
+  {
+    id: "ecommerce-system",
+
+    num: "03",
+
+    title: "E-Commerce Infrastructure System",
+
+    subtitle: "Backend • Monitoring • Deployment",
+
+    categories: ["systems"],
+
+    description:
+      "Production-style e-commerce backend focused on deployment workflows, observability, containerization, and scalable backend architecture.",
+
+    highlights: [
+      "FastAPI backend architecture",
+      "Dockerized services and deployment",
+      "Grafana + Prometheus monitoring",
+      "Cloud VM and Linux infrastructure",
+    ],
+
+    stack: [
+      "FastAPI",
+      "PostgreSQL",
+      "Docker",
+      "Grafana",
+      "Prometheus",
+      "Linux",
+      "GCP",
+    ],
+
+    github: "https://github.com/Anantha-Shayan",
+
+    overview:
+      "A backend-focused e-commerce system built to explore real-world software infrastructure. The project focused heavily on deployment workflows, observability, monitoring, backend APIs, and production-oriented architecture.",
+
+    architecture: [
+      "REST API backend using FastAPI",
+      "PostgreSQL database integration",
+      "Dockerized services",
+      "Metrics collection using Prometheus",
+      "Monitoring dashboards using Grafana",
+      "Linux VM deployment and infrastructure setup",
+    ],
+  },
+
+  {
+    id: "health-monitoring",
+
+    num: "04",
+
+    title:
+      "Non-Invasive Health Monitoring System",
+
+    subtitle: "ML & Sensor Fusion",
+
+    categories: ["ml"],
+
+    description:
+      "Machine learning-based health monitoring system focused on hydration estimation and diabetes risk assessment using sensor fusion.",
+
+    highlights: [
+      "Sensor-based feature analysis",
+      "Data preprocessing and model experimentation",
+      "Hydration level estimation",
+      "Team-based research and development",
+    ],
+
+    stack: [
+      "Python",
+      "Pandas",
+      "Machine Learning",
+      "Data Processing",
+    ],
+
+    github: "https://github.com/Anantha-Shayan",
+
+    overview:
+      "A machine learning project focused on non-invasive health monitoring using sensor fusion techniques to estimate hydration levels and assess diabetes risk.",
+
+    architecture: [
+      "Sensor data collection and preprocessing",
+      "Feature extraction and cleaning workflows",
+      "Machine learning experimentation and evaluation",
+      "Health risk estimation pipeline",
+      "Collaborative research and development workflow",
     ],
   },
 ];
 
-// ─── EXPERIENCE ───────────────────────────────────────────────
+// ─── EXPERIENCE ──────────────────────────────────────────────
+
 export type Experience = {
-  role:     string;
-  company:  string;
-  period:   string;
-  type:     string;
-  points:   string[];
+  role: string;
+  company: string;
+  period: string;
+  type: string;
+  points: string[];
 };
 
 export const experience: Experience[] = [
   {
-    role:    "Founding Tech Lead",
+    role: "Founding Tech Lead",
+
     company: "Healthrytix HealthTech Solutions",
-    period:  "2024 – Present",
-    type:    "AI / Automation",
+
+    period: "October 2025 – Present",
+
+    type: "AI / Automation",
+
     points: [
-      "Built end-to-end AI automation workflows using n8n, eliminating manual operational bottlenecks",
-      "Reduced operational costs by 70–80% through intelligent process automation",
-      "Designed and deployed scalable systems on GCP — sole technical contributor across the stack",
-      "Owned architecture decisions from infrastructure to model integration",
+      "Developing AI-driven workflows and automation systems for healthcare operations",
+
+      "Working across backend systems, infrastructure, deployment, and technical planning",
+
+      "Building scalable automation pipelines using n8n and cloud-based infrastructure",
+
+      "Contributing to architecture decisions across AI workflows and platform systems",
     ],
   },
 ];
 
 // ─── EDUCATION ───────────────────────────────────────────────
+
 export type Education = {
   institution: string;
-  degree:      string;
-  period:      string;
-  badge:       string;
+  degree: string;
+  period: string;
+  badge: string;
 };
 
 export const education: Education[] = [
   {
     institution: "IIT Ropar",
-    degree:      "Minor in Artificial Intelligence",
-    period:      "2025 – 2026",
-    badge:       "AI Specialization",
+
+    degree: "Minor in Artificial Intelligence",
+
+    period: "2025 – Present",
+
+    badge: "AI Specialization",
   },
+
   {
     institution: "JSS Academy of Technical Education",
-    degree:      "B.Tech — Computer Science & Engineering (AI)",
-    period:      "2024 – 2028",
-    badge:       "CSE · AI/ML Major",
+
+    degree:
+      "B.E. — Computer Science & Engineering (Artificial Intelligence & Machine Learning)",
+
+    period: "2024 – 2028",
+
+    badge: "AI/ML Major",
   },
 ];

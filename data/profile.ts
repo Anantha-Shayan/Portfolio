@@ -37,8 +37,6 @@ export const about = {
 
     "Alongside AI development, I regularly work with Docker, Linux, FastAPI, PostgreSQL, Grafana, Prometheus, CI/CD pipelines, and cloud-based deployments.",
 
-    "Recently, I explored hybrid search architectures while building a Job Recommendation System, comparing FAISS with distributed vector databases and studying HNSW-based similarity search systems.",
-
     "Currently, I work as the Founding Tech Lead at an early-stage HealthTech startup, contributing across AI workflows, backend systems, automation, and technical architecture.",
   ],
 

@@ -7,9 +7,9 @@
 
 export const profile = {
   name:  "Anantha Shayan",
-  title: "Machine Learning Engineer",
+  title: "AI/ML • Backend Systems • Infrastructure",
   tagline:
-    "Building intelligent systems that work in the real world — from NLP pipelines to probabilistic forecasting to production-ready AI backends.",
+    "I enjoy building systems end-to-end — from machine learning models and backend APIs to deployment pipelines, monitoring dashboards, and cloud infrastructure. My work is driven by curiosity, experimentation, and a strong focus on building things that are practical, scalable, and actually useful. Currently pursuing a B.E. in Artificial Intelligence & Machine Learning at JSSATE Bengaluru alongside a Minor in AI from IIT Ropar, I actively work on projects involving AI systems, vector search, backend engineering, DevOps, workflow automation, and real-world product development.",
   status: "Available for opportunities",
   email:  "ananthashayan2802@outlook.com",
   socials: {

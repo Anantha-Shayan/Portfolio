@@ -190,15 +190,17 @@ export const projects: Project[] = [
     highlights: [
       "Resume parsing and embedding pipeline",
       "Semantic + keyword search experimentation",
-      "FAISS and vector database comparisons",
+      "Vector database comparisons and optimal selection",
       "Skill gap analysis and ranking",
     ],
 
     stack: [
       "Python",
-      "FastAPI",
+      "Flask",
+      "Docker",
       "Sentence Transformers",
       "FAISS",
+      "Endee",
       "Vector Databases",
       "Semantic Search",
       "REST API",
@@ -214,7 +216,7 @@ export const projects: Project[] = [
       "Resume parsing and embedding pipeline",
       "Semantic similarity search using vector embeddings",
       "Hybrid retrieval experimentation with keyword matching",
-      "Vector indexing and retrieval using FAISS",
+      "Vector indexing and retrieval",
       "Skill gap analysis alongside ranking",
       "Backend APIs for search and recommendation workflows",
     ],
@@ -237,6 +239,8 @@ export const projects: Project[] = [
     highlights: [
       "Retrieval-Augmented Generation pipeline",
       "Semantic agricultural knowledge retrieval",
+      "Location, price and weather aware Crop Recommendation system",
+      "Predictive modelling",
       "Context-aware conversational responses",
       "Low-resource deployment design",
     ],
@@ -272,45 +276,46 @@ export const projects: Project[] = [
 
     title: "E-Commerce Infrastructure System",
 
-    subtitle: "Backend • Monitoring • Deployment",
+    subtitle: "DBMS • Backend • Observability • Deployment",
 
     categories: ["systems"],
 
-    description:
-      "Production-style e-commerce backend focused on deployment workflows, observability, containerization, and scalable backend architecture.",
+   description:
+    "Production-style e-commerce backend designed around real-world DBMS concepts, scalable APIs, observability, and deployment workflows.",
 
-    highlights: [
-      "FastAPI backend architecture",
-      "Dockerized services and deployment",
-      "Grafana + Prometheus monitoring",
-      "Cloud VM and Linux infrastructure",
-    ],
+   highlights: [
+    "Transaction-safe order and payment workflows",
+    "RBAC-based authentication and access control",
+    "Database normalization and relational schema design",
+    "Grafana + Prometheus monitoring stack",
+  ],
 
-    stack: [
-      "FastAPI",
-      "PostgreSQL",
-      "Docker",
-      "Grafana",
-      "Prometheus",
-      "Linux",
-      "GCP",
-    ],
+   stack: [
+    "FastAPI",
+    "PostgreSQL",
+    "Docker",
+    "Grafana",
+    "Prometheus",
+    "Linux",
+    "GCP",
+  ],
 
-    github: "https://github.com/Anantha-Shayan",
+   github: "https://github.com/Anantha-Shayan/ecommerce",
 
-    overview:
-      "A backend-focused e-commerce system built to explore real-world software infrastructure. The project focused heavily on deployment workflows, observability, monitoring, backend APIs, and production-oriented architecture.",
+   overview:
+    "A backend-focused e-commerce system built to understand how production-grade applications are designed internally. The project emphasized practical DBMS concepts including transactions, relational schema design, normalization, RBAC, triggers, and concurrency-aware workflows alongside deployment, monitoring, and infrastructure management.",
 
-    architecture: [
-      "REST API backend using FastAPI",
-      "PostgreSQL database integration",
-      "Dockerized services",
-      "Metrics collection using Prometheus",
-      "Monitoring dashboards using Grafana",
-      "Linux VM deployment and infrastructure setup",
-    ],
-  },
-
+   architecture: [
+    "Normalized PostgreSQL schema for products, users, carts, and orders",
+    "Transaction-based checkout and inventory workflows",
+    "Role-Based Access Control (RBAC) for admin and customer operations",
+    "Database triggers for inventory and order state updates",
+    "REST API backend built using FastAPI",
+    "Dockerized services deployed on Linux cloud VMs",
+    "Prometheus metrics collection and Grafana dashboards for observability",
+  ],
+},
+  
   {
     id: "health-monitoring",
 
@@ -373,7 +378,7 @@ export const experience: Experience[] = [
 
     period: "October 2025 – Present",
 
-    type: "AI / Automation",
+    type: "AI / Automation • Infra and Deployment",
 
     points: [
       "Developing AI-driven workflows and automation systems for healthcare operations",
@@ -402,7 +407,7 @@ export const education: Education[] = [
 
     degree: "Minor in Artificial Intelligence",
 
-    period: "2025 – Present",
+    period: "Jan 2025 – Present",
 
     badge: "AI Specialization",
   },

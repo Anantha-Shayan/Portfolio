@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { useTheme }         from "@/hooks/useTheme";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { cn }               from "@/lib/utils";
+import { trackEvent }       from "@/lib/analytics";
 
 const NAV_LINKS = [
   { label: "About",      id: "about" },
@@ -29,6 +30,10 @@ export function Navbar() {
   }, []);
 
   function scrollTo(id: string) {
+    trackEvent("nav_click", {
+      nav_target: id,
+      nav_label: NAV_LINKS.find((link) => link.id === id)?.label ?? id,
+    });
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   }
 
@@ -48,7 +53,10 @@ export function Navbar() {
     >
       {/* Logo — full name, not an abbreviation */}
       <button
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        onClick={() => {
+          trackEvent("nav_click", { nav_target: "hero", nav_label: "Logo" });
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }}
         className="font-head text-[0.95rem] font-semibold tracking-tight"
         style={{ color: "var(--text)" }}
         aria-label="Scroll to top"

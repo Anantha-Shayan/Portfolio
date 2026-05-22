@@ -9,6 +9,7 @@ import { staggerContainer, staggerChild, viewportOnce } from "@/lib/animations";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionLabel }   from "@/components/ui/SectionLabel";
 import { profile } from "@/data/profile";
+import { trackEvent } from "@/lib/analytics";
 
 // ── Inline SVG icons ─────────────────────────────────────────
 function MailIcon() {
@@ -41,22 +42,46 @@ export function Contact() {
   const [fields,  setFields]  = useState({ name: "", email: "", message: "" });
   const [success, setSuccess] = useState(false);
   const [error,   setError]   = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setFields((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     setError("");
   }
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     if (!fields.name || !fields.email || !fields.message) {
       setError("Please fill in all fields.");
       return;
     }
-    // In production wire this to an API route or Resend / Formspree
-    setSuccess(true);
-    setFields({ name: "", email: "", message: "" });
-    setTimeout(() => setSuccess(false), 5000);
+
+    setIsSubmitting(true);
+    setError("");
+    setSuccess(false);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(fields),
+      });
+      const data = (await response.json()) as { error?: string };
+
+      if (!response.ok) {
+        throw new Error(data.error ?? "Message could not be sent.");
+      }
+
+      trackEvent("contact_submit", { status: "success" });
+      setSuccess(true);
+      setFields({ name: "", email: "", message: "" });
+      setTimeout(() => setSuccess(false), 5000);
+    } catch (err) {
+      trackEvent("contact_submit", { status: "error" });
+      setError(err instanceof Error ? err.message : "Message could not be sent.");
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -79,6 +104,12 @@ export function Contact() {
 
           <ContactItem icon={<MailIcon />}>
             <a href={`mailto:${profile.email}`}
+               onClick={() =>
+                 trackEvent("external_link_click", {
+                   link_label: "Email",
+                   link_url: `mailto:${profile.email}`,
+                 })
+               }
                className="transition-colors duration-200 hover:text-[var(--accent)]"
                style={{ color: "var(--text2)" }}>
               {profile.email}
@@ -87,6 +118,12 @@ export function Contact() {
 
           <ContactItem icon={<LinkedInIcon />}>
             <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer"
+               onClick={() =>
+                 trackEvent("external_link_click", {
+                   link_label: "LinkedIn",
+                   link_url: profile.socials.linkedin,
+                 })
+               }
                className="transition-colors duration-200 hover:text-[var(--accent)]"
                style={{ color: "var(--text2)" }}>
               LinkedIn ↗
@@ -95,6 +132,12 @@ export function Contact() {
 
           <ContactItem icon={<GitHubIcon />}>
             <a href={profile.socials.github} target="_blank" rel="noopener noreferrer"
+               onClick={() =>
+                 trackEvent("external_link_click", {
+                   link_label: "GitHub",
+                   link_url: profile.socials.github,
+                 })
+               }
                className="transition-colors duration-200 hover:text-[var(--accent)]"
                style={{ color: "var(--text2)" }}>
               GitHub ↗
@@ -149,28 +192,31 @@ export function Contact() {
 
           <button
             type="submit"
+            disabled={isSubmitting}
             className="w-full py-3 rounded-lg font-medium text-[0.9rem] text-white tracking-wide transition-all duration-200"
-            style={{ background: "var(--accent)" }}
-            onMouseEnter={(e) =>
-              ((e.currentTarget as HTMLButtonElement).style.background = "var(--accent2)")
-            }
-            onMouseLeave={(e) =>
-              ((e.currentTarget as HTMLButtonElement).style.background = "var(--accent)")
-            }
+            style={{ background: "var(--accent)", opacity: isSubmitting ? 0.7 : 1 }}
+            onMouseEnter={(e) => {
+              if (!isSubmitting) {
+                (e.currentTarget as HTMLButtonElement).style.background = "var(--accent2)";
+              }
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLButtonElement).style.background = "var(--accent)";
+            }}
           >
-            Send Message →
+            {isSubmitting ? "Sending..." : "Send Message →"}
           </button>
 
           {success && (
             <p
               className="mt-3 text-center font-mono text-[0.8rem] px-4 py-3 rounded-lg border"
               style={{
-                color:       "red",
+                color:       "#34d399",
                 borderColor: "rgba(52,211,153,0.25)",
                 background:  "rgba(52,211,153,0.06)",
               }}
             >
-              There is an error in sending the message! Please contact via GMail or LinkedIn.
+              Message sent. I&apos;ll get back to you soon.
             </p>
           )}
         </motion.form>

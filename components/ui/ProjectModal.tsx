@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { scaleIn, fadeIn }        from "@/lib/animations";
 import type { Project }            from "@/types";
 import { CategoryBadge }           from "./CategoryBadge";
+import { trackEvent }              from "@/lib/analytics";
 
 interface ProjectModalProps {
   project:  Project | null;
@@ -135,6 +136,13 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() =>
+                  trackEvent("external_link_click", {
+                    link_label: `${project.title} GitHub`,
+                    link_url: project.github,
+                    project_id: project.id,
+                  })
+                }
                 className="inline-flex items-center gap-2 font-mono text-[0.78rem] px-4 py-2 rounded-lg border transition-all duration-200"
                 style={{
                   borderColor: "rgba(108,127,255,0.35)",

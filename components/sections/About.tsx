@@ -7,6 +7,7 @@ import { staggerContainer, staggerChild, viewportOnce } from "@/lib/animations";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionLabel }   from "@/components/ui/SectionLabel";
 import { about } from "@/data/profile";
+import { trackEvent } from "@/lib/analytics";
 
 export function About() {
   return (
@@ -42,6 +43,12 @@ export function About() {
               href={about.featuredArticle.link}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() =>
+                trackEvent("external_link_click", {
+                  link_label: "Featured Article",
+                  link_url: about.featuredArticle.link,
+                })
+              }
               className="flex flex-col gap-2"
             >
               {/* Label */}

@@ -13,6 +13,7 @@ import { ProjectModal }    from "@/components/ui/ProjectModal";
 import { projects }        from "@/data/profile";
 import type { Project, ProjectCategory } from "@/types";
 import { cn } from "@/lib/utils";
+import { trackEvent } from "@/lib/analytics";
 
 type Filter = "all" | ProjectCategory;
 
@@ -64,10 +65,16 @@ export function Projects() {
       >
         <AnimatePresence mode="popLayout">
           {filtered.map((project) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              onClick={() => setSelected(project)}
+          <ProjectCard
+            key={project.id}
+            project={project}
+              onClick={() => {
+                trackEvent("project_open", {
+                  project_id: project.id,
+                  project_title: project.title,
+                });
+                setSelected(project);
+              }}
             />
           ))}
         </AnimatePresence>

@@ -9,6 +9,7 @@
 import { motion } from "framer-motion";
 import { staggerContainer, staggerChild } from "@/lib/animations";
 import { profile } from "@/data/profile";
+import { trackEvent } from "@/lib/analytics";
 
 function LinkedInIcon() {
   return (
@@ -36,7 +37,8 @@ function MediumIcon() {
 
 
 export function Hero() {
-  function scrollTo(id: string) {
+  function scrollTo(id: string, label: string) {
+    trackEvent("nav_click", { nav_target: id, nav_label: label });
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   }
 
@@ -123,7 +125,7 @@ export function Hero() {
           {/* CTA buttons */}
           <motion.div variants={staggerChild} className="flex flex-wrap gap-3 mb-10">
             <button
-              onClick={() => scrollTo("projects")}
+              onClick={() => scrollTo("projects", "View Projects")}
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium text-[0.9rem] text-white transition-all duration-200 hover:-translate-y-px"
               style={{ background: "var(--accent)" }}
               onMouseEnter={(e) =>
@@ -139,6 +141,11 @@ export function Hero() {
             <a
               href={"https://drive.google.com/file/d/1z1gTvSFrImqgnRK8BXT58KHvI3d9d9RH/view?usp=sharing"}
               download
+              onClick={() =>
+                trackEvent("resume_click", {
+                  link_url: "https://drive.google.com/file/d/1z1gTvSFrImqgnRK8BXT58KHvI3d9d9RH/view",
+                })
+              }
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-light text-[0.9rem] border transition-all duration-200"
               style={{ borderColor: "var(--border)", color: "var(--text)", background: "transparent" }}
               onMouseEnter={(e) => {
@@ -154,7 +161,7 @@ export function Hero() {
             </a>
 
             <button
-              onClick={() => scrollTo("contact")}
+              onClick={() => scrollTo("contact", "Contact Me")}
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-light text-[0.9rem] border transition-all duration-200"
               style={{ borderColor: "var(--border)", color: "var(--text)", background: "transparent" }}
               onMouseEnter={(e) => {
@@ -188,6 +195,7 @@ function SocialLink({ href, icon, label }: { href: string; icon: React.ReactNode
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => trackEvent("external_link_click", { link_label: label, link_url: href })}
       className="inline-flex items-center gap-1.5 font-mono text-[0.75rem] tracking-wider transition-colors duration-200"
       style={{ color: "var(--text3)" }}
       onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "var(--accent)")}

@@ -205,6 +205,8 @@ export const projects: Project[] = [
       "Vector Databases",
       "Semantic Search",
       "REST API",
+      "Linux",
+      "GCP",
     ],
 
     github:
@@ -289,14 +291,17 @@ export const projects: Project[] = [
     "RBAC-based authentication and access control",
     "Database normalization and relational schema design",
     "Grafana + Prometheus monitoring stack",
+     "RabbitMQ to handle async email processing "
   ],
 
    stack: [
-    "FastAPI",
-    "PostgreSQL",
+     "DBMS",
+     "PostgreSQL",
     "Docker",
+     "RabbitMQ",
     "Grafana",
     "Prometheus",
+    "FastAPI",
     "Linux",
     "GCP",
   ],
@@ -311,9 +316,10 @@ export const projects: Project[] = [
     "Transaction-based checkout and inventory workflows",
     "Role-Based Access Control (RBAC) for admin and customer operations",
     "Database triggers for inventory and order state updates",
-    "REST API backend built using FastAPI",
-    "Dockerized services deployed on Linux cloud VMs",
+    "RabbitMQ was used to asynchronously process payment confirmation emails",
+     "Dockerized services deployed on Linux cloud VMs",
     "Prometheus metrics collection and Grafana dashboards for observability",
+    "REST API backend built using FastAPI",
   ],
 },
   

@@ -146,8 +146,9 @@ export const skills: SkillGroup[] = [
     tags: [
       "GitHub",
       "n8n",
-      "Workflow Automation",
+      "Postman",
       "REST APIs",
+      "Figma",
     ],
   },
 ];

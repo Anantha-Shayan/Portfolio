@@ -77,82 +77,372 @@ export const about = {
 
 // ─── SKILLS ──────────────────────────────────────────────────
 
+export type Skill = {
+  name: string;
+  /** Key used by the Skills section to select a Simple Icon or Lucide fallback. */
+  icon?: string;
+  proficiency:
+    | "Production"
+    | "Advanced"
+    | "Intermediate"
+    | "Learning"
+    | "Beginner"
+    | "Projects"
+    | "Project"
+    | "Theory";
+  concepts: string[];
+};
+
 export type SkillGroup = {
   label: string;
-  tags: string[];
+  skills: Skill[];
 };
 
 export const skills: SkillGroup[] = [
   {
     label: "Languages",
-
-    tags: ["Python", "SQL", "C", "C++"],
-  },
-
-  {
-    label: "AI / ML",
-
-    tags: [
-      "Machine Learning",
-      "NLP",
-      "RAG",
-      "Semantic Search",
-      "Recommendation Systems",
-      "CNN",
+    skills: [
+      {
+        name: "Python",
+        icon: "python",
+        proficiency: "Production",
+        concepts: [
+          "OOP",
+          "Decorators",
+          "Virtual Environments",
+          "Package Management (pip)",
+          "Exception Handling",
+          "Logging",
+          "File Handling"
+        ],
+      },
+      {
+        name: "SQL",
+        icon: "sql",
+        proficiency: "Production",
+        concepts: [
+          "Joins",
+          "Aggregation",
+          "Subqueries",
+          "Transactions",
+          "Normalization",
+          "Constraints",
+          "Indexes"
+        ],
+      },
+      {
+        name: "C",
+        icon: "c",
+        proficiency: "Beginner",
+        concepts: [
+          "Pointers",
+          "Memory Management",
+          "Structures",
+          "File Handling",
+          "Dynamic Memory"
+        ],
+      },
+      {
+        name: "C++",
+        icon: "cplusplus",
+        proficiency: "Beginner",
+        concepts: [
+          "OOP",
+          "Exception Handling"
+  
+        ],
+      },
     ],
   },
 
   {
-    label: "Libraries & Frameworks",
+    label: "AI & Machine Learning",
+    skills: [
+      {
+        name: "Machine Learning",
+        icon: "machine-learning",
+        proficiency: "Projects",
+        concepts: [
+          "Classification",
+          "Regression",
+          "Time Series",
+          "Feature Engineering",
+          "Model Evaluation",
+          "Cross Validation",
+          "Hyperparameter Tuning",
+          "Clustering"
+        ],
+      },
+      {
+        name: "RAG",
+        icon: "rag",
+        proficiency: "Projects",
+        concepts: [
+          "Chunking",
+          "Embeddings",
+          "Vector Search",
+          "Context Retrieval",
+          "Hybrid Retrieval",
+          "Metadata Filtering",
+          "LangChain",
+          "Prompt Engineering",
+        ],
+      },
+      {
+        name: "Recommendation Systems",
+        icon: "recommendation",
+        proficiency: "Projects",
+        concepts: [
+          "Embedding Search",
+          "Similarity Ranking",
+          "Skill Matching",
+          "Hybrid Retrieval",
+        ],
+      },
+      {
+        name: "NLP",
+        icon: "nlp",
+        proficiency: "Projects",
+        concepts: [
+          "Embeddings",
+          "Tokenization",
+          "Text Processing",
+          "Vectorization",
+          "NER",
+          "Text Classification",
+          "Sentiment Analysis",
+          "Prompt Design",
+        ],
+      },
+      {
+        name: "CNN",
+        icon: "cnn",
+        proficiency: "Theory",
+        concepts: [
+          "Convolution",
+          "Pooling",
+          "Image Classification",
+          "Feature Extraction",
+          "Transfer Learning",
+        ],
+      },
+    ],
+  },
 
-    tags: [
-      "Scikit-learn",
-      "LangChain",
-      "Pandas",
-      "NumPy",
-      "FastAPI",
-      "Flask",
+  {
+    label: "Backend Development",
+    skills: [
+      {
+        name: "FastAPI",
+        icon: "fastapi",
+        proficiency: "Production",
+        concepts: [
+          "REST APIs",
+          "Dependency Injection",
+          "JWT",
+          "Middleware",
+          "Pydantic",
+          "Alembic",
+          "psycopg",
+          "OpenAPI",
+          "Exception Handlers"
+        ],
+      },
+      {
+        name: "Flask",
+        icon: "flask",
+        proficiency: "Beginner",
+        concepts: [
+          "REST APIs",
+          "Routing",
+        ],
+      },
     ],
   },
 
   {
     label: "Infrastructure & DevOps",
-
-    tags: [
-      "Docker",
-      "Linux",
-      "GCP",
-      "CI/CD",
-      "Grafana",
-      "Prometheus",
-      "Server Management",
+    skills: [
+      {
+        name: "Docker",
+        icon: "docker",
+        proficiency: "Production",
+        concepts: [
+          "Docker Compose",
+          "Image Optimization",
+          "Networking",
+          "Volumes",
+          "Health Checks",
+          "Environment Variables",
+          "Port Mapping",
+          "Bind Mounts",
+          "Multi-stage Builds",
+          "Dockerfile Best Practices"
+        ],
+      },
+      {
+        name: "Linux",
+        icon: "linux",
+        proficiency: "Production",
+        concepts: [
+          "SSH",
+          "Nginx",
+          "Permissions",
+        ],
+      },
+      {
+        name: "Google Cloud",
+        icon: "google-cloud",
+        proficiency: "Production",
+        concepts: [
+          "Compute Engine",
+          "Cloud Storage",
+          "Cloud SQL",
+          "IAM",
+          "SSH",
+          "Firewall Rules",
+          "Static IP",
+          "Service Accounts",
+        ],
+      },
+      {
+        name: "GitHub Actions",
+        icon: "github-actions",
+        proficiency: "Projects",
+        concepts: [
+          "CI/CD",
+          "Build",
+          "Deploy",
+          "Secrets",
+          "Workflows",
+        ],
+      },
+      {
+        name: "Server Management",
+        icon: "server",
+        proficiency: "Production",
+        concepts: [
+          "Linux VPS",
+          "SSH",
+          "Reverse Proxy",
+          "SSL",
+          "Deployment",
+          "Domain Configuration",
+          "Firewall"
+        ],
+      },
     ],
   },
 
   {
-    label: "Databases",
-
-    tags: [
-      "PostgreSQL",
-      "MySQL",
-      "FAISS",
-      "Vector Databases",
+    label: "Databases & Storage",
+    skills: [
+      {
+        name: "PostgreSQL",
+        icon: "postgresql",
+        proficiency: "Production",
+        concepts: [
+          "Normalization",
+          "Transactions",
+          "Indexes",
+          "Triggers",
+          "RBAC",
+          "Connection Pooling",
+        ],
+      },
+      {
+        name: "MySQL",
+        icon: "mysql",
+        proficiency: "Project",
+        concepts: [
+          "Schema Design",
+          "Joins",
+          "Constraints",
+        ],
+      },
+      {
+        name: "Vector Databases (FAISS, Qdrant, Endee)",
+        icon: "vector-db",
+        proficiency: "Projects",
+        concepts: [
+          "HNSW",
+          "Metadata Filtering",
+          "Hybrid Search",
+        ],
+      },
     ],
   },
 
   {
-    label: "Tools & Workflow",
+    label: "Observability",
+    skills: [
+      {
+        name: "Grafana",
+        icon: "grafana",
+        proficiency: "Projects",
+        concepts: [
+          "Dashboards",
+          "Panels",
+          "Alerting",
+        ],
+      },
+      {
+        name: "Prometheus",
+        icon: "prometheus",
+        proficiency: "Projects",
+        concepts: [
+          "Metrics",
+          "Exporters",
+          "Scraping",
+        ],
+      },
+    ],
+  },
 
-    tags: [
-      "GitHub",
-      "n8n",
-      "Postman",
-      "REST APIs",
-      "Figma",
+  {
+    label: "Developer Tools",
+    skills: [
+      {
+        name: "GitHub",
+        icon: "github",
+        proficiency: "Production",
+        concepts: [
+          "Git",
+          "Branching",
+          "Pull Requests",
+          "Merge Strategies",
+          "Code Reviews",
+          "Git Flow",
+          "Rebase",
+        ],
+      },
+      {
+        name: "Postman",
+        icon: "postman",
+        proficiency: "Projects",
+        concepts: [
+          "Collections",
+          "Authentication",
+          "API Testing",
+        ],
+      },
+      {
+        name: "n8n",
+        icon: "n8n",
+        proficiency: "Production",
+        concepts: [
+          "Workflow Automation",
+          "Webhooks",
+          "HTTP",
+          "Google Sheets",
+          "Scheduling",
+          "API Integration",
+          "Error Handling"
+        ],
+      },
     ],
   },
 ];
-
 // ─── PROJECTS ────────────────────────────────────────────────
 
 export type ProjectCategory = "ml" | "nlp" | "systems";

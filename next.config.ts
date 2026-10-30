@@ -5,8 +5,9 @@ const nextConfig: NextConfig = {
   // React strict mode — catches side-effect bugs early
   reactStrictMode: true,
 
-  // Build a self-contained production server bundle for low-memory VMs.
-  output: "standalone",
+  // Self-contained server bundle for the VM / Docker deployment. Vercel
+  // builds its own output, so it's skipped there (VERCEL=1 is set on Vercel).
+  output: process.env.VERCEL ? undefined : "standalone",
 
   // Keep Next's file tracing scoped to this repository. Without this, a
   // package-lock.json in a parent directory can make VM/CI builds trace from
@@ -21,6 +22,11 @@ const nextConfig: NextConfig = {
   // Security headers applied to every route
   async headers() {
     return [
+      {
+        // Pre-built knowledge-base data for the SasyaSampada explorer.
+        source: "/data/:path*",
+        headers: [{ key: "Cache-Control", value: "public, max-age=3600, stale-while-revalidate=86400" }],
+      },
       {
         source: "/(.*)",
         headers: [

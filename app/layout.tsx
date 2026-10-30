@@ -1,64 +1,33 @@
 // app/layout.tsx
-// Root layout — loads fonts, sets metadata, and wraps the app.
+// Root layout: fonts, metadata, analytics and the themed root the journey lives in.
 
 import type { Metadata } from "next";
-import { Syne, DM_Sans, DM_Mono, Playfair_Display } from "next/font/google";
+import { Big_Shoulders, Instrument_Sans } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
-import { OrbBackground } from "@/components/ui/OrbBackground";
-import Script from "next/script"; //Google analytics
-import AnalyticsTracker from "@/components/AnalyticsTracker"; //Google analytics
+import AnalyticsTracker from "@/components/AnalyticsTracker";
 
-/* ── Google Fonts (subset for performance) ────────────────────── */
-const syne = Syne({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-syne",
-  display: "swap",
-});
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "500"],
-  style: ["normal", "italic"],
-  variable: "--font-dm-sans",
-  display: "swap",
-});
-
-const dmMono = DM_Mono({
-  subsets: ["latin"],
-  weight: ["300", "400", "500"],
-  style: ["normal", "italic"],
-  variable: "--font-dm-mono",
-  display: "swap",
-});
-
-// Elegant serif for the hero name — professional, distinctive
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-  style: ["normal", "italic"],
-  variable: "--font-playfair",
-  display: "swap",
-});
+/* ── Fonts ────────────────────────────────────────────────────── */
+const display = Big_Shoulders({ subsets: ["latin"], variable: "--font-display", display: "swap" });
+const body = Instrument_Sans({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-body", display: "swap" });
 
 /* ── Metadata ─────────────────────────────────────────────────── */
 export const metadata: Metadata = {
   metadataBase: new URL("https://ananthadev.online"), // update with real domain
   title: {
-    default:  "Anantha Shayan — Machine Learning Engineer",
+    default:  "Anantha Shayan — AI/ML, Backend & Infrastructure",
     template: "%s | Anantha Shayan",
   },
   description:
-    "Machine Learning Engineer specialising in NLP, time-series forecasting, and scalable AI systems. Building real-world ML pipelines on GCP.",
+    "Practical systems that combine backend engineering, cloud infrastructure, automation and applied AI. Inspect the work through seven commands.",
   keywords: [
-    "Machine Learning Engineer",
-    "NLP",
-    "Deep Learning",
+    "AI/ML Engineer",
+    "Backend Engineering",
+    "Kubernetes",
+    "Docker",
+    "FastAPI",
     "RAG",
-    "Time-Series Forecasting",
-    "AI Engineer",
-    "Python",
-    "LangChain",
+    "Infrastructure",
     "GCP",
   ],
   authors: [{ name: "Anantha Shayan" }],
@@ -67,14 +36,14 @@ export const metadata: Metadata = {
     type:        "website",
     locale:      "en_US",
     url:         "https://ananthadev.online",
-    title:       "Anantha Shayan — Machine Learning Engineer",
-    description: "Building intelligent systems that work in the real world.",
+    title:       "Anantha Shayan — AI/ML, Backend & Infrastructure",
+    description: "Practical systems that combine backend engineering, cloud infrastructure, automation and applied AI.",
     siteName:    "Anantha Shayan Portfolio",
   },
   twitter: {
     card:        "summary_large_image",
-    title:       "Anantha Shayan — Machine Learning Engineer",
-    description: "Building intelligent systems that work in the real world.",
+    title:       "Anantha Shayan — AI/ML, Backend & Infrastructure",
+    description: "Practical systems that combine backend engineering, cloud infrastructure, automation and applied AI.",
     creator:     "@anantha_shayan", // update if you have a handle
   },
   robots: {
@@ -84,43 +53,26 @@ export const metadata: Metadata = {
   },
 };
 
-// React 19: children is typed via the built-in React.ReactNode
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
-  <body
-    className={`${syne.variable} ${dmSans.variable} ${dmMono.variable} ${playfair.variable} relative`}
-  >
-    
-    <AnalyticsTracker />
-    
-    {/* Google Analytics */}
-    <Script
-      src="https://www.googletagmanager.com/gtag/js?id=G-J4NWDWC7LC"
-      strategy="afterInteractive"
-    />
-    <Script id="google-analytics" strategy="afterInteractive">
-      {`
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        window.gtag = gtag;
-        gtag('js', new Date());
-        gtag('config', 'G-J4NWDWC7LC');
-      `}
-    </Script>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${display.variable} ${body.variable}`}>
+        <AnalyticsTracker />
 
-    {/* 🔥 Orb Background */}
-    <OrbBackground />
-    
-    {/* Content */}
-    <div className="relative z-10">
-      {children}
-    </div>
-  </body>
-</html>
+        {/* Google Analytics */}
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-J4NWDWC7LC" strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            window.gtag = gtag;
+            gtag('js', new Date());
+            gtag('config', 'G-J4NWDWC7LC');
+          `}
+        </Script>
+
+        <div className="pl-root">{children}</div>
+      </body>
+    </html>
   );
 }

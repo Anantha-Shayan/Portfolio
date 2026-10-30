@@ -37,7 +37,7 @@ export const about = {
 
     "Alongside AI development, I regularly work with Docker, Linux, FastAPI, PostgreSQL, Grafana, Prometheus, CI/CD pipelines, and cloud-based deployments.",
 
-    "Currently, I work as the Founding Tech Lead at an early-stage HealthTech startup, contributing across AI workflows, backend systems, automation, and technical architecture.",
+    "Currently, I work as the Founding Tech Lead at Healthrytix, an early-stage HealthTech startup, and as an AI/ML Developer Intern at Molecular Solutions, building computational drug discovery and workflow systems.",
   ],
 
   featuredArticle: {
@@ -166,11 +166,35 @@ export const skills: SkillGroup[] = [
           "Classification",
           "Regression",
           "Time Series",
+          "DeepAR Forecasting",
           "Feature Engineering",
           "Model Evaluation",
           "Cross Validation",
           "Hyperparameter Tuning",
           "Clustering"
+        ],
+      },
+      {
+        name: "scikit-learn",
+        icon: "scikit-learn",
+        proficiency: "Projects",
+        concepts: [
+          "Classification",
+          "Regression",
+          "Pipelines",
+          "Model Evaluation",
+          "Cross Validation",
+        ],
+      },
+      {
+        name: "Computational Drug Discovery",
+        icon: "drug-discovery",
+        proficiency: "Projects",
+        concepts: [
+          "Molecular Docking",
+          "ADMET Prediction",
+          "Synthetic Accessibility",
+          "Binding Affinity",
         ],
       },
       {
@@ -206,6 +230,7 @@ export const skills: SkillGroup[] = [
         concepts: [
           "Embeddings",
           "Tokenization",
+          "Transformers",
           "Text Processing",
           "Vectorization",
           "NER",
@@ -242,6 +267,7 @@ export const skills: SkillGroup[] = [
           "JWT",
           "Middleware",
           "Pydantic",
+          "SQLAlchemy",
           "Alembic",
           "psycopg",
           "OpenAPI",
@@ -257,6 +283,16 @@ export const skills: SkillGroup[] = [
           "Routing",
         ],
       },
+      {
+        name: "RabbitMQ",
+        icon: "rabbitmq",
+        proficiency: "Projects",
+        concepts: [
+          "Message Queues",
+          "Event-driven Architecture",
+          "Async Processing",
+        ],
+      },
     ],
   },
 
@@ -269,6 +305,7 @@ export const skills: SkillGroup[] = [
         proficiency: "Production",
         concepts: [
           "Docker Compose",
+          "Podman",
           "Image Optimization",
           "Networking",
           "Volumes",
@@ -278,6 +315,19 @@ export const skills: SkillGroup[] = [
           "Bind Mounts",
           "Multi-stage Builds",
           "Dockerfile Best Practices"
+        ],
+      },
+      {
+        name: "Kubernetes",
+        icon: "kubernetes",
+        proficiency: "Projects",
+        concepts: [
+          "Rolling Updates",
+          "Health Probes",
+          "HPA Autoscaling",
+          "Service Networking",
+          "Config & Secrets",
+          "Persistent Storage",
         ],
       },
       {
@@ -329,6 +379,16 @@ export const skills: SkillGroup[] = [
           "Deployment",
           "Domain Configuration",
           "Firewall"
+        ],
+      },
+      {
+        name: "Cloudflare Zero Trust",
+        icon: "cloudflare",
+        proficiency: "Learning",
+        concepts: [
+          "ZTNA",
+          "Identity-based Access",
+          "Secure Internal Apps",
         ],
       },
     ],
@@ -394,6 +454,15 @@ export const skills: SkillGroup[] = [
           "Metrics",
           "Exporters",
           "Scraping",
+        ],
+      },
+      {
+        name: "Sentry",
+        icon: "sentry",
+        proficiency: "Projects",
+        concepts: [
+          "Error Tracking",
+          "Alerting",
         ],
       },
     ],
@@ -465,13 +534,117 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    id: "job-rec",
+    id: "marketgrid",
 
     num: "01",
 
+    title: "MarketGrid",
+
+    subtitle: "Production E-Commerce Backend Platform",
+
+    categories: ["systems"],
+
+    description:
+      "E-commerce backend built around transaction-safe PostgreSQL design, event-driven email delivery over RabbitMQ and Kubernetes orchestration. First deployed as a Docker Compose stack on a GCP VM, then moved to Kubernetes on Minikube.",
+
+    highlights: [
+      "Runs on Kubernetes (Minikube): NGINX Ingress, rolling updates, health probes and CPU-based autoscaling",
+      "ACID checkout with row locks, JWT authentication and role-based access control",
+      "Event-driven confirmation emails over RabbitMQ, decoupled from order processing",
+      "Earlier deployed on a GCP VM with Docker Compose and GitHub Actions CI/CD",
+    ],
+
+    stack: [
+      "Kubernetes",
+      "Minikube",
+      "Docker",
+      "PostgreSQL",
+      "RabbitMQ",
+      "FastAPI",
+      "NGINX Ingress",
+      "GitHub Actions",
+      "Prometheus",
+      "Grafana",
+      "Linux",
+      "GCP",
+    ],
+
+    github: "https://github.com/Anantha-Shayan/ecommerce",
+
+    overview:
+      "A backend-focused e-commerce platform built to understand how production-grade systems are designed and operated. It pairs practical DBMS concepts (transactions, row locking, normalization, RBAC, triggers) with event-driven messaging and container orchestration. It was first deployed to a GCP VM with Docker Compose and GitHub Actions, then moved to Kubernetes on Minikube, where it runs locally.",
+
+    architecture: [
+      "Docker Compose stack on a GCP VM, deployed by GitHub Actions through GHCR (before Kubernetes)",
+      "Kubernetes on Minikube with two namespaces and an NGINX Ingress routing / and /api",
+      "Rolling updates, startup/readiness/liveness probes and graceful shutdown on the backend",
+      "HPA-based autoscaling driven by the Metrics Server",
+      "ConfigMaps, Secrets and persistent volumes; Alembic migration and seed run as Jobs",
+      "Normalized PostgreSQL schema with transactional checkout, triggers and RBAC",
+      "Payment trigger queues an email job; the backend publishes it to RabbitMQ and a worker sends it",
+    ],
+  },
+
+  {
+    id: "sasya-sampada",
+
+    num: "02",
+
+    title: "SasyaSampada",
+
+    subtitle: "AgriAI RAG Assistant",
+
+    categories: ["nlp", "systems"],
+
+    description:
+      "RAG-based agricultural assistant that retrieves domain-specific knowledge to provide contextual responses and crop-related assistance.",
+
+    highlights: [
+      "Modular RAG platform with independent ingestion, retrieval, embedding and generation pipelines",
+      "Configurable ingestion: PDF parsing, cleaning, recursive chunking, metadata enrichment, embeddings and vector indexing, with stage-wise retry and logging",
+      "Metadata-aware chunking, configurable overlap and citations on Qdrant with Sentence Transformers",
+      "Location, price and weather aware Crop Recommendation system",
+      "Predictive modelling",
+      "Context-aware conversational responses",
+      "Low-resource deployment design",
+    ],
+
+    stack: [
+      "Python",
+      "LangChain",
+      "RAG",
+      "Qdrant",
+      "Sentence Transformers",
+      "Embeddings",
+      "NLP",
+      "Docker",
+      "GCP",
+    ],
+
+    github: "https://github.com/Anantha-Shayan/SasyaSampada",
+
+    overview:
+      "An AI-powered farming assistant built using Retrieval-Augmented Generation (RAG). Instead of generating generic responses, the system retrieves relevant agricultural knowledge before generating answers, improving contextual accuracy and reliability.",
+
+    architecture: [
+      "Agricultural knowledge base chunking and indexing",
+      "Semantic retrieval using embeddings",
+      "Top-k contextual document retrieval",
+      "LangChain orchestration pipeline",
+      "RAG-based response generation",
+      "Crop recommendation workflows",
+      "Containerized with Docker and deployed on GCP, exposed through REST APIs",
+    ],
+  },
+
+  {
+    id: "job-rec",
+
+    num: "03",
+
     title: "AI Job Recommendation System",
 
-    subtitle: "Semantic Retrieval & Vector Search",
+    subtitle: "Semantic Search Engine",
 
     categories: ["ml", "systems"],
 
@@ -483,6 +656,7 @@ export const projects: Project[] = [
       "Semantic + keyword search experimentation",
       "Vector database comparisons and optimal selection",
       "Skill gap analysis and ranking",
+      "Hybrid semantic + skill-gap ranking exposed through REST APIs",
     ],
 
     stack: [
@@ -516,107 +690,43 @@ export const projects: Project[] = [
   },
 
   {
-    id: "sasya-sampada",
+    id: "price-forecasting",
 
-    num: "02",
+    num: "04",
 
-    title: "SasyaSampada",
+    title: "Agricultural Market Price Forecasting",
 
-    subtitle: "AI Assistance for Farming",
+    subtitle: "Time-Series Forecasting",
 
-    categories: ["nlp", "systems"],
+    categories: ["ml"],
 
     description:
-      "RAG-based agricultural assistant that retrieves domain-specific knowledge to provide contextual responses and crop-related assistance.",
+      "DeepAR-based forecasting pipelines for commodity prices, built over a large agricultural market dataset.",
 
     highlights: [
-      "Retrieval-Augmented Generation pipeline",
-      "Semantic agricultural knowledge retrieval",
-      "Location, price and weather aware Crop Recommendation system",
-      "Predictive modelling",
-      "Context-aware conversational responses",
-      "Low-resource deployment design",
+      "Processed 2.4M time-series records",
+      "DeepAR forecasting pipelines for commodity prices",
     ],
 
-    stack: [
-      "Python",
-      "LangChain",
-      "RAG",
-      "FAISS",
-      "Embeddings",
-      "NLP",
-    ],
+    stack: ["Python", "DeepAR", "Time Series"],
 
-    github: "https://github.com/Anantha-Shayan/SasyaSampada",
+    // TODO: replace with the project's repository URL (not recoverable from the resume PDF).
+    github: "https://github.com/Anantha-Shayan",
 
     overview:
-      "An AI-powered farming assistant built using Retrieval-Augmented Generation (RAG). Instead of generating generic responses, the system retrieves relevant agricultural knowledge before generating answers, improving contextual accuracy and reliability.",
+      "Forecasting pipelines for agricultural commodity prices, processing 2.4M time-series records and modelling them with DeepAR.",
 
     architecture: [
-      "Agricultural knowledge base chunking and indexing",
-      "Semantic retrieval using embeddings",
-      "Top-k contextual document retrieval",
-      "LangChain orchestration pipeline",
-      "RAG-based response generation",
-      "Crop recommendation workflows",
+      "Cleaning and processing of 2.4M time-series records",
+      "DeepAR model training and forecasting pipeline",
+      "Commodity price forecasts for agricultural markets",
     ],
   },
 
   {
-    id: "ecommerce-system",
-
-    num: "03",
-
-    title: "E-Commerce Infrastructure System",
-
-    subtitle: "DBMS • Backend • Observability • Deployment",
-
-    categories: ["systems"],
-
-   description:
-    "Production-style e-commerce backend designed around real-world DBMS concepts, scalable APIs, observability, and deployment workflows.",
-
-   highlights: [
-    "Transaction-safe order and payment workflows",
-    "RBAC-based authentication and access control",
-    "Database normalization and relational schema design",
-    "Grafana + Prometheus monitoring stack",
-     "RabbitMQ to handle async email processing "
-  ],
-
-   stack: [
-     "DBMS",
-     "PostgreSQL",
-    "Docker",
-     "RabbitMQ",
-    "Grafana",
-    "Prometheus",
-    "FastAPI",
-    "Linux",
-    "GCP",
-  ],
-
-   github: "https://github.com/Anantha-Shayan/ecommerce",
-
-   overview:
-    "A backend-focused e-commerce system built to understand how production-grade applications are designed internally. The project emphasized practical DBMS concepts including transactions, relational schema design, normalization, RBAC, triggers, and concurrency-aware workflows alongside deployment, monitoring, and infrastructure management.",
-
-   architecture: [
-    "Normalized PostgreSQL schema for products, users, carts, and orders",
-    "Transaction-based checkout and inventory workflows",
-    "Role-Based Access Control (RBAC) for admin and customer operations",
-    "Database triggers for inventory and order state updates",
-    "RabbitMQ was used to asynchronously process payment confirmation emails",
-     "Dockerized services deployed on Linux cloud VMs",
-    "Prometheus metrics collection and Grafana dashboards for observability",
-    "REST API backend built using FastAPI",
-  ],
-},
-  
-  {
     id: "health-monitoring",
 
-    num: "04",
+    num: "05",
 
     title:
       "Non-Invasive Health Monitoring System",
@@ -660,6 +770,8 @@ export const projects: Project[] = [
 // ─── EXPERIENCE ──────────────────────────────────────────────
 
 export type Experience = {
+  /** systemd-style unit name used by the journey's `systemctl status` command. */
+  unit: string;
   role: string;
   company: string;
   period: string;
@@ -669,22 +781,46 @@ export type Experience = {
 
 export const experience: Experience[] = [
   {
+    unit: "molecular-solutions",
+
+    role: "AI/ML Developer Intern",
+
+    company: "Molecular Solutions",
+
+    period: "Oct 2026 – Present",
+
+    type: "AI • Backend Workflows",
+
+    points: [
+      "Built an end-to-end computational drug discovery workflow: molecular docking, synthetic accessibility scoring, ADMET prediction and binding-affinity analysis",
+
+      "Designed persistent, batch-based pipelines on FastAPI, PostgreSQL, SQLAlchemy and Alembic, with orchestration, retries and recovery from failures",
+
+      "Integrated scientific tools and third-party APIs into modular Python backend workflows, containerized with Docker Compose",
+
+      "Rolling out Cloudflare Zero Trust (ZTNA) for secure, identity-based access to internal applications",
+    ],
+  },
+
+  {
+    unit: "healthrytix",
+
     role: "Founding Tech Lead",
 
     company: "Healthrytix HealthTech Solutions",
 
-    period: "October 2025 – Present",
+    period: "Sept 2025 – Present",
 
     type: "AI / Automation • Infra and Deployment",
 
     points: [
-      "Developing AI-driven workflows and automation systems for healthcare operations",
+      "Lead a 2-member tech team: delegating feature development, reviewing pull requests and giving technical feedback",
 
-      "Working across backend systems, infrastructure, deployment, and technical planning",
+      "Own end-to-end delivery, from requirements and system design to implementation, deployment and production operations",
 
-      "Building scalable automation pipelines using n8n and cloud-based infrastructure",
+      "Manage cloud infrastructure and releases across GCP and VPS: server configuration, backend integrations, troubleshooting and reliability",
 
-      "Contributing to architecture decisions across AI workflows and platform systems",
+      "Built AI-driven automation workflows in n8n with WhatsApp, Google Sheets and internal APIs, cutting manual effort by 70–80%",
     ],
   },
 ];
@@ -702,9 +838,9 @@ export const education: Education[] = [
   {
     institution: "IIT Ropar",
 
-    degree: "Minor in Artificial Intelligence",
+    degree: "Major in Artificial Intelligence",
 
-    period: "Jan 2025 – Present",
+    period: "Jan 2025 – Jun 2026",
 
     badge: "AI Specialization",
   },
@@ -712,10 +848,9 @@ export const education: Education[] = [
   {
     institution: "JSS Academy of Technical Education",
 
-    degree:
-      "B.E. — Computer Science & Engineering (Artificial Intelligence & Machine Learning)",
+    degree: "B.Tech, Computer Science Engineering (AI&ML major)",
 
-    period: "2024 – 2028",
+    period: "Oct 2024 – Jun 2028",
 
     badge: "AI/ML Major",
   },

@@ -792,6 +792,10 @@ export const experience: Experience[] = [
     type: "AI • Backend Workflows",
 
     points: [
+      "Deployed a Dockerized FastAPI application on an on-premises Ubuntu machine and enabled secure remote browser access for authorized employees using Cloudflare Zero-trust."
+
+      "Configured Cloudflare Tunnel to establish outbound connectivity between the internal application environment and Cloudflare without requiring direct inbound port exposure."
+
       "Built an end-to-end computational drug discovery workflow: molecular docking, synthetic accessibility scoring, ADMET prediction and binding-affinity analysis",
 
       "Designed persistent, batch-based pipelines on FastAPI, PostgreSQL, SQLAlchemy and Alembic, with orchestration, retries and recovery from failures",

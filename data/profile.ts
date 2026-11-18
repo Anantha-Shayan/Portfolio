@@ -186,17 +186,7 @@ export const skills: SkillGroup[] = [
           "Cross Validation",
         ],
       },
-      {
-        name: "Computational Drug Discovery",
-        icon: "drug-discovery",
-        proficiency: "Projects",
-        concepts: [
-          "Molecular Docking",
-          "ADMET Prediction",
-          "Synthetic Accessibility",
-          "Binding Affinity",
-        ],
-      },
+      
       {
         name: "RAG",
         icon: "rag",
@@ -795,15 +785,11 @@ export const experience: Experience[] = [
     type: "AI • Backend Workflows",
 
     points: [
-      "Deployed a Dockerized FastAPI application on an on-premises Ubuntu machine and gave authorized employees secure remote browser access through Cloudflare Zero Trust",
+      "Deployed a Dockerized internal application on an on-premises server with secure remote access for employees through Cloudflare Zero Trust and Tunnel, with no inbound ports exposed",
 
-      "Used Cloudflare Tunnel for outbound-only connectivity, so the internal environment is reachable without exposing any inbound ports",
+      "Built an end-to-end computational drug discovery workflow: docking, synthetic accessibility, ADMET prediction and binding kinetics",
 
-      "Built an end-to-end computational drug discovery workflow: chemical-space docking, synthetic accessibility scoring, ADMET prediction, binding affinity and unbinding kinetics",
-
-      "Designed persistent, batch-based pipelines on FastAPI, PostgreSQL, SQLAlchemy and Alembic, with orchestration, retries and recovery from failures",
-
-      "Integrated scientific tools and third-party APIs into modular Python backend workflows, containerized with Docker Compose",
+      "Designed resilient, batch-based backend pipelines on FastAPI and PostgreSQL with retries and failure recovery, integrating scientific tools and third-party APIs",
     ],
   },
 
@@ -819,17 +805,9 @@ export const experience: Experience[] = [
     type: "AI / Automation • Infra and Deployment",
 
     points: [
-      "Lead a 3-person tech team and own delivery end to end, from requirements and system design to deployment and production operations; mentored two interns and documented the workflow for onboarding",
+      "Lead and mentor a 3-person tech team and own delivery end to end, from requirements and system design to deployment and production operations",
 
-      "Introduced trunk-based development with short-lived branches and tag-based production releases, adding release discipline without slowing delivery",
-
-      "Built a GitHub Actions CI pipeline (tests, lint, build) that publishes immutable, commit-SHA-tagged Docker images to GHCR, so every deploy traces back to a commit",
-
-      "Implemented build-once, promote-everywhere: staging and production run the same tested image, which removed on-server builds and staging-vs-prod drift",
-
-      "Built a manually triggered production deploy (workflow_dispatch) with a deployer-only guard, commit-on-main and image-existence checks, a pre-deploy pg_dump backup and a health-check gate, giving controlled releases on GitHub's Free plan, plus one-step rollback by redeploying a previous tag",
-
-      "Separated staging and production with their own databases, configs and OAuth settings, and moved deploy config into the repo so infrastructure changes get code review; secrets stay on the server",
+      "Built the CI/CD and release pipeline: automated builds, isolated staging and production environments, and controlled production deploys with backups and one-step rollback",
 
       "Built AI-driven automation workflows in n8n with WhatsApp, Google Sheets and internal APIs, cutting manual effort by 70–80%",
     ],

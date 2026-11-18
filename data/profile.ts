@@ -9,9 +9,9 @@ export const profile = {
   title: "AI/ML • Backend Systems • Infrastructure",
 
   tagline:
-    "I build intelligent systems that combine AI, backend engineering, automation, and infrastructure. My work ranges from retrieval systems and recommendation engines to cloud deployments, observability stacks, and production-focused backend workflows.",
+    "I build and run the systems behind intelligent products: backend services, CI/CD and release pipelines, cloud and on-prem infrastructure, and the AI/ML workloads that sit on top. Over a year of shipping to production, as a founding tech lead and as an ML engineering intern.",
 
-  status: "Available for opportunities",
+  status: "Open to DevOps, Platform, SRE, Infrastructure & Backend roles",
 
   email: "ananthashayan2802@outlook.com",
 
@@ -29,13 +29,13 @@ export const profile = {
 
 export const about = {
   paragraphs: [
-    "I’m an AI/ML engineer focused on building practical systems that combine machine learning with scalable software engineering.",
+    "I’m a backend and infrastructure engineer with 1+ year of hands-on production experience, and an AI/ML background that lets me run ML workloads rather than just build them. I’m looking for DevOps, platform, SRE, infrastructure and backend roles.",
 
-    "My interests include retrieval systems, semantic search, recommendation engines, backend APIs, workflow automation, and cloud infrastructure.",
+    "At Healthrytix I lead a small tech team and own how code reaches production: CI/CD, release promotion, rollbacks, backups and environment isolation. At Molecular Solutions I deploy and secure ML-backed services on on-prem infrastructure.",
 
-    "I enjoy understanding how systems work internally — from vector search pipelines and RAG architectures to deployment workflows, monitoring stacks, and distributed infrastructure.",
+    "I like understanding how systems work internally, from vector search pipelines and RAG architectures to deployment workflows, monitoring stacks and distributed infrastructure.",
 
-    "Alongside AI development, I regularly work with Docker, Linux, FastAPI, PostgreSQL, Grafana, Prometheus, CI/CD pipelines, and cloud-based deployments.",
+    "Day to day I work with Linux, Docker, FastAPI, PostgreSQL, GitHub Actions, Kubernetes, Prometheus and Grafana, across GCP, VPS and on-prem environments.",
 
     "Currently, I work as the Founding Tech Lead at Healthrytix, an early-stage HealthTech startup, and as an AI/ML Developer Intern at Molecular Solutions, building computational drug discovery and workflow systems.",
   ],
@@ -60,10 +60,10 @@ export const about = {
     },
 
     {
-      title: "Infrastructure",
+      title: "Infrastructure & Platform",
 
       description:
-        "Cloud deployments, Docker, monitoring, CI/CD, and backend systems",
+        "CI/CD and release engineering, Docker, Kubernetes, secure access, monitoring, and backend systems",
     },
 
     {
@@ -253,49 +253,6 @@ export const skills: SkillGroup[] = [
       },
     ],
   },
-
-  {
-    label: "Backend Development",
-    skills: [
-      {
-        name: "FastAPI",
-        icon: "fastapi",
-        proficiency: "Production",
-        concepts: [
-          "REST APIs",
-          "Dependency Injection",
-          "JWT",
-          "Middleware",
-          "Pydantic",
-          "SQLAlchemy",
-          "Alembic",
-          "psycopg",
-          "OpenAPI",
-          "Exception Handlers"
-        ],
-      },
-      {
-        name: "Flask",
-        icon: "flask",
-        proficiency: "Beginner",
-        concepts: [
-          "REST APIs",
-          "Routing",
-        ],
-      },
-      {
-        name: "RabbitMQ",
-        icon: "rabbitmq",
-        proficiency: "Projects",
-        concepts: [
-          "Message Queues",
-          "Event-driven Architecture",
-          "Async Processing",
-        ],
-      },
-    ],
-  },
-
   {
     label: "Infrastructure & DevOps",
     skills: [
@@ -358,11 +315,13 @@ export const skills: SkillGroup[] = [
       {
         name: "GitHub Actions",
         icon: "github-actions",
-        proficiency: "Projects",
+        proficiency: "Production",
         concepts: [
           "CI/CD",
-          "Build",
-          "Deploy",
+          "GHCR",
+          "workflow_dispatch",
+          "Build Once, Promote Everywhere",
+          "Rollbacks",
           "Secrets",
           "Workflows",
         ],
@@ -374,7 +333,7 @@ export const skills: SkillGroup[] = [
         concepts: [
           "Linux VPS",
           "SSH",
-          "Reverse Proxy",
+          "Reverse Proxy (Caddy, Nginx)",
           "SSL",
           "Deployment",
           "Domain Configuration",
@@ -384,15 +343,59 @@ export const skills: SkillGroup[] = [
       {
         name: "Cloudflare Zero Trust",
         icon: "cloudflare",
-        proficiency: "Learning",
+        proficiency: "Intermediate",
         concepts: [
           "ZTNA",
+          "Cloudflare Tunnel",
           "Identity-based Access",
           "Secure Internal Apps",
         ],
       },
     ],
   },
+
+  {
+    label: "Backend Development",
+    skills: [
+      {
+        name: "FastAPI",
+        icon: "fastapi",
+        proficiency: "Production",
+        concepts: [
+          "REST APIs",
+          "Dependency Injection",
+          "JWT",
+          "Middleware",
+          "Pydantic",
+          "SQLAlchemy",
+          "Alembic",
+          "psycopg",
+          "OpenAPI",
+          "Exception Handlers"
+        ],
+      },
+      {
+        name: "Flask",
+        icon: "flask",
+        proficiency: "Beginner",
+        concepts: [
+          "REST APIs",
+          "Routing",
+        ],
+      },
+      {
+        name: "RabbitMQ",
+        icon: "rabbitmq",
+        proficiency: "Projects",
+        concepts: [
+          "Message Queues",
+          "Event-driven Architecture",
+          "Async Processing",
+        ],
+      },
+    ],
+  },
+
 
   {
     label: "Databases & Storage",
@@ -792,17 +795,15 @@ export const experience: Experience[] = [
     type: "AI • Backend Workflows",
 
     points: [
-      "Deployed a Dockerized FastAPI application on an on-premises Ubuntu machine and enabled secure remote browser access for authorized employees using Cloudflare Zero-trust."
+      "Deployed a Dockerized FastAPI application on an on-premises Ubuntu machine and gave authorized employees secure remote browser access through Cloudflare Zero Trust",
 
-      "Configured Cloudflare Tunnel to establish outbound connectivity between the internal application environment and Cloudflare without requiring direct inbound port exposure."
+      "Used Cloudflare Tunnel for outbound-only connectivity, so the internal environment is reachable without exposing any inbound ports",
 
-      "Built an end-to-end computational drug discovery workflow: molecular docking, synthetic accessibility scoring, ADMET prediction and binding-affinity analysis",
+      "Built an end-to-end computational drug discovery workflow: chemical-space docking, synthetic accessibility scoring, ADMET prediction, binding affinity and unbinding kinetics",
 
       "Designed persistent, batch-based pipelines on FastAPI, PostgreSQL, SQLAlchemy and Alembic, with orchestration, retries and recovery from failures",
 
       "Integrated scientific tools and third-party APIs into modular Python backend workflows, containerized with Docker Compose",
-
-      "Rolling out Cloudflare Zero Trust (ZTNA) for secure, identity-based access to internal applications",
     ],
   },
 
@@ -818,11 +819,17 @@ export const experience: Experience[] = [
     type: "AI / Automation • Infra and Deployment",
 
     points: [
-      "Lead a 2-member tech team: delegating feature development, reviewing pull requests and giving technical feedback",
+      "Lead a 3-person tech team and own delivery end to end, from requirements and system design to deployment and production operations; mentored two interns and documented the workflow for onboarding",
 
-      "Own end-to-end delivery, from requirements and system design to implementation, deployment and production operations",
+      "Introduced trunk-based development with short-lived branches and tag-based production releases, adding release discipline without slowing delivery",
 
-      "Manage cloud infrastructure and releases across GCP and VPS: server configuration, backend integrations, troubleshooting and reliability",
+      "Built a GitHub Actions CI pipeline (tests, lint, build) that publishes immutable, commit-SHA-tagged Docker images to GHCR, so every deploy traces back to a commit",
+
+      "Implemented build-once, promote-everywhere: staging and production run the same tested image, which removed on-server builds and staging-vs-prod drift",
+
+      "Built a manually triggered production deploy (workflow_dispatch) with a deployer-only guard, commit-on-main and image-existence checks, a pre-deploy pg_dump backup and a health-check gate, giving controlled releases on GitHub's Free plan, plus one-step rollback by redeploying a previous tag",
+
+      "Separated staging and production with their own databases, configs and OAuth settings, and moved deploy config into the repo so infrastructure changes get code review; secrets stay on the server",
 
       "Built AI-driven automation workflows in n8n with WhatsApp, Google Sheets and internal APIs, cutting manual effort by 70–80%",
     ],
